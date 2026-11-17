@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Feedback Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="feedback-panel">
+        <div class="panel-header">
+          <p class="eyebrow">Campus Voice</p>
+          <h1>Student Feedback</h1>
+        </div>
+
+        <form id="feedbackForm" class="feedback-form">
+          <div class="form-field">
+            <label for="studentName">Student Name</label>
+            <input id="studentName" name="studentName" type="text" placeholder="Enter your name" maxlength="80" required />
+          </div>
+
+          <div class="form-field">
+            <label for="feedbackMessage">Feedback Message</label>
+            <textarea id="feedbackMessage" name="feedbackMessage" rows="5" placeholder="Tell us about your experience..." maxlength="500" required></textarea>
+          </div>
+
+          <div class="form-field">
+            <label for="rating">Rating</label>
+            <select id="rating" name="rating" required>
+              <option value="" selected disabled>Select a rating</option>
+              <option value="5">5 - Excellent</option>
+              <option value="4">4 - Very Good</option>
+              <option value="3">3 - Good</option>
+              <option value="2">2 - Fair</option>
+              <option value="1">1 - Poor</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-btn">Submit Feedback</button>
+          <p id="statusMessage" class="status-message" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="feedback-feed">
+        <div class="feed-header">
+          <h2>Recent Feedback</h2>
+        </div>
+        <div id="feedbackList" class="feedback-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script src="./firebase-config.js"></script>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

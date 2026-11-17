@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /feedback/{feedbackId} {
+      allow read: if true;
+      allow create: if request.resource.data.studentName is string
+        && request.resource.data.studentName.size() > 0
+        && request.resource.data.message is string
+        && request.resource.data.message.size() > 0
+        && request.resource.data.rating is int
+        && request.resource.data.rating >= 1
+        && request.resource.data.rating <= 5
+        && request.resource.data.createdAt is timestamp;
+      allow update, delete: if false;
+    }
+  }
+}
